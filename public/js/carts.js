@@ -1,26 +1,25 @@
-let products = []; // variable globale pour les produits
+let products = []; // Variable globale pour stocker les produits une seule fois
 
-// Charge les produits depuis le JSON une seule fois
+// Charge les produits depuis le JSON une seule fois au chargement
 async function loadProducts() {
   try {
-    const res = await fetch('./src/data/products.json'); // adapte le chemin
+    const res = await fetch('./src/data/products.json'); // adapte le chemin si besoin
     products = await res.json();
   } catch (e) {
     console.error('Erreur chargement produits:', e);
   }
 }
 
-// Ajoute un produit au panier
+// Ajoute un produit au panier localStorage
 function addToCart(productId) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  // stocke toujours en string pour cohérence avec dataset HTML
-  cart.push(String(productId));
+  cart.push(String(productId)); // stocker en string pour cohérence
   localStorage.setItem('cart', JSON.stringify(cart));
   updateCartCount();
   alert('Produit ajouté au panier !');
 }
 
-// Met à jour le compteur d'articles
+// Met à jour l’affichage du compteur d’articles dans le panier
 function updateCartCount() {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   const cartCountElement = document.getElementById('cart-count');
@@ -29,7 +28,7 @@ function updateCartCount() {
   }
 }
 
-// Affiche les produits du panier
+// Affiche les articles du panier sur la page panier.html (ou similaire)
 function displayCart() {
   const cartContainer = document.getElementById('cart-items');
   const totalPriceContainer = document.getElementById('total-price');
@@ -42,7 +41,7 @@ function displayCart() {
     return;
   }
 
-  // compter les quantités par produit
+  // Compter les quantités de chaque produit
   const counts = {};
   cart.forEach(id => {
     counts[id] = (counts[id] || 0) + 1;
@@ -75,7 +74,7 @@ function displayCart() {
 
   if (totalPriceContainer) totalPriceContainer.textContent = `Total : ${total.toFixed(2)} €`;
 
-  // Gestion des boutons "Retirer"
+  // Gestion des boutons pour retirer une unité
   document.querySelectorAll('.remove-button').forEach(button => {
     button.addEventListener('click', () => {
       const productId = button.getAttribute('data-productid');
@@ -84,10 +83,9 @@ function displayCart() {
   });
 }
 
-// Supprime une unité d’un produit du panier
+// Retire une unité d’un produit du panier
 function removeOneUnitFromCart(productId) {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  // chercher par string car on stocke en string
   const index = cart.indexOf(productId);
   if (index !== -1) {
     cart.splice(index, 1);
@@ -97,32 +95,27 @@ function removeOneUnitFromCart(productId) {
   }
 }
 
-// Prépare les items à envoyer à Stripe (avec price_id et quantité)
+// Prépare le panier pour l’envoyer au backend et créer une session Stripe Checkout
 async function getItemsForStripe() {
-  // Charger la liste des produits depuis products.json
-  const response = await fetch('./src/data/products.json'); // adapte le chemin si besoin
+  const response = await fetch('./src/data/products.json');
   if (!response.ok) {
     throw new Error('Impossible de charger les produits.');
   }
   const products = await response.json();
-
-  // Récupérer le panier
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  // Compter les quantités de chaque produit
   const counts = {};
   cart.forEach(id => {
     counts[id] = (counts[id] || 0) + 1;
   });
 
-  // Construire le tableau pour Stripe
   const items = Object.entries(counts).map(([id, quantity]) => {
     const product = products.find(p => String(p.id) === id);
     if (!product || !product.stripe) {
       throw new Error(`Produit introuvable ou sans price_id Stripe : id=${id}`);
     }
     return {
-      price: product.stripe,  // <-- ici c’est le price_id Stripe
+      price: product.stripe, // c’est ton price_id Stripe côté produit
       quantity
     };
   });
@@ -132,7 +125,7 @@ async function getItemsForStripe() {
   return items;
 }
 
-// Gestion du paiement avec Stripe
+// Gère le clic sur le bouton de paiement → crée la session côté serveur puis redirige vers Stripe
 document.getElementById('checkout-button')?.addEventListener('click', async () => {
   try {
     const items = await getItemsForStripe();
@@ -152,7 +145,8 @@ document.getElementById('checkout-button')?.addEventListener('click', async () =
 
     const data = await response.json();
 
-    const stripe = Stripe('pk_test_51RdteyR5ypv4Eb3pIKK3rg2qxPLETnr4nPZHwUfMfRGOhy8VxiQXo1ipebStYXVCxl3pIcVP7LTrnS9DPizGw97400aDzFrhjF'); // Ta clé publique Stripe
+    // Ta clé publique Stripe — en dur comme tu l’as demandé
+    const stripe = Stripe('pk_test_51RdteyR5ypv4Eb3pIKK3rg2qxPLETnr4nPZHwUfMfRGOhy8VxiQXo1ipebStYXVCxl3pIcVP7LTrnS9DPizGw97400aDzFrhjF');
 
     await stripe.redirectToCheckout({ sessionId: data.id });
   } catch (error) {
