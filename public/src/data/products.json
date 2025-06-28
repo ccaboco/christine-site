@@ -76,7 +76,7 @@
         "stripe": "price_XXXXXX",
         "title": "Trousse pochette",
         "price": 19.90,
-        "image": "./image/trousse.webp",
+        "image": "./image/trousse.webp.jfif",
         "description": "28x17cm (7.5cm profondeur)"
       },
       {
