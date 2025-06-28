@@ -92,7 +92,7 @@
         "stripe": "price_XXXXXX",
         "title": "Trousse patchwork",
         "price": 16.90,
-        "image": "./image/patchwork.webp",
+        "image": "./image/patchwork.webp.jfif",
         "description": "20x11cm (5cm profondeur)"
       },
       {
@@ -124,7 +124,7 @@
         "stripe": "price_XXXXXX",
         "title": "Serviette d'invité",
         "price": 18.00,
-        "image": "./image/serviette.webp",
+        "image": "./image/serviette.jfif",
         "description": "30x50cm avec motif brodé"
       }
     ]
