@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mon E-commerce - Accueil</title>
+  <link rel="stylesheet" href="index.css" />
+  <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div><a href="index.html" class="product-link"><img src="logo.png" alt="logo" class="logo" /></a></div>
+      <ul>
+        <li><a href="boutique.html">Boutique</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="panier.html">Panier (<span id="cart-count">0</span>)</a></li>
+        <li style="display: none;"><a href="/admin/" id="admin-link">Admin</a></li>
+        <li><a href="https://www.instagram.com/974christine10" target="_blank" rel="noopener noreferrer" class="instagram-btn">
+          <i class="fab fa-instagram"></i>
+          Instagram
+        </a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Bienvenue sur MonShop</h1>
+    <p>Découvrez nos produits exclusifs</p>
+    <button id="shop-button">Voir la boutique</button>
+  </section>
+
+  <section class="featured-products">
+    
+    <div class="carousel-container">
+      <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+      <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+      <div class="carousel-track" id="products-container"></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Christine. Tous droits réservés.</p>
+    <a href="mention-legal.html">Mentions légales</a>
+  </footer>
+
+  <script src="js/carts.js"></script>
+  <script>
+    let currentIndex = 0;
+    
+    fetch('./src/data/products.json')
+      .then(response => response.json())
+      .then(products => {
+        const container = document.getElementById('products-container');
+        
+        products.forEach(product => {
+          container.innerHTML += `
+            <div class="carousel-slide">
+              <div class="product-card">
+                <a href="produit.html?id=${product.id}" class="product-link">
+                  <img src="${product.image}" alt="${product.title}">
+                  <h3>${product.title}</h3>
+                </a>
+                <p>${product.price} €</p>
+                <button class="add-to-cart" onclick="addToCart(${product.id})">Ajouter au panier</button>
+              </div>
+            </div>
+          `;
+        });
+        
+        initCarousel();
+      });
+
+    function initCarousel() {
+      const nextBtn = document.querySelector('.carousel-btn.next');
+      const prevBtn = document.querySelector('.carousel-btn.prev');
+      
+      nextBtn.addEventListener('click', () => {
+        const slides = document.querySelectorAll('.carousel-slide');
+        if (currentIndex < slides.length - 4) {
+          currentIndex++;
+          updateCarousel();
+        }
+      });
+      
+      prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateCarousel();
+        }
+      });
+      
+      function updateCarousel() {
+        const slideWidth = document.querySelector('.carousel-slide').offsetWidth;
+        document.querySelector('.carousel-track').style.transform = `translateX(-${currentIndex * (slideWidth + 20)}px)`;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('shop-button').addEventListener('click', () => {
+        document.getElementById('boutique-link').click();
+      });
+      
+      if (window.location.hostname === 'localhost' || window.location.href.includes('netlify.app')) {
+        document.getElementById('admin-link').style.display = 'block';
+        netlifyIdentity.init();
+      }
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('shop-button').addEventListener('click', () => {
+        window.location.href = 'boutique.html'; // Redirection vers la boutique
+      });
+      
+      if (window.location.hostname === 'localhost' || window.location.href.includes('netlify.app')) {
+        document.getElementById('admin-link').style.display = 'block';
+        netlifyIdentity.init();
+      }
+    });
+  </script>
+</body>
+</html>

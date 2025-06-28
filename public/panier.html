@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Mon Panier - MonShop</title>
+  <link rel="stylesheet" href="panier.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div><a href="index.html" class="product-link"><img src="logo.png" alt="logo" class="logo" /></a></div>
+      <ul>
+        <li><a href="#" id="boutique-link">Boutique</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="panier.html">Panier (<span id="cart-count">0</span>)</a></li>
+        <!-- Lien admin caché - visible seulement en développement -->
+        <li style="display: none;"><a href="/admin/" id="admin-link">Admin</a></li>
+        <!-- Bouton Instagram amélioré -->
+        <li><a href="https://www.instagram.com/974christine10" target="_blank" rel="noopener noreferrer" class="instagram-btn">
+          <i class="fab fa-instagram"></i>
+          Instagram
+        </a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Votre panier</h1>
+    
+    <section id="cart-items">
+      <!-- Les produits seront insérés ici -->
+    </section>
+
+    <div id="total-price">
+      <!-- Le total s'affichera ici -->
+    </div>
+
+    <div id="checkout">
+      <button id="checkout-button">Passer au paiement</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Christine - Tous droits réservés</p>
+  </footer>
+
+  <script src="./js/carts.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+
+
+</body>
+</html>
+
+

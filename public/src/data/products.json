@@ -1,0 +1,131 @@
+[
+      {
+        "id": 1,
+        "stripe": "price_1Rdv98R5ypv4Eb3p9OvI79So",
+        "title": "Horloge",
+        "price": 49.99,
+        "image": "./image/horloge.webp",
+        "description": "Horloge"
+      },
+      {
+        "id": 2,
+        "stripe": "price_1RdvA3R5ypv4Eb3pyRV749KV",
+        "title": "Mug",
+        "price": 12.99,
+        "image": "./image/mug.webp",
+        "description": "passe au micro ondes et lave vaisselle"
+      },
+      {
+        "id": 3,
+        "stripe": "price_1RdvAbR5ypv4Eb3pZKLMcKNI",
+        "title": "Tote bag",
+        "price": 24.99,
+        "image": "./image/sac.webp",
+        "description": "40/31cm de haut tissus épais"
+      },
+      {
+        "id": 4,
+        "stripe": "price_XXXXXX",
+        "title": "Gourde 500ml",
+        "price": 19.99,
+        "image": "./image/gourde.webp",
+        "description": "Gourde isotherme sublimée avec aquarelle"
+      },
+      {
+        "id": 5,
+        "stripe": "price_XXXXXX",
+        "title": "Thermos canette 500ml",
+        "price": 27.50,
+        "image": "./image/thermos.webp",
+        "description": "Pour boisson chaude ou froide avec paille intégrée"
+      },
+      {
+        "id": 6,
+        "stripe": "price_XXXXXX",
+        "title": "Porte-cartes anti-piratage",
+        "price": 15.50,
+        "image": "./image/portecartes.webp",
+        "description": "Protège jusqu'à 5 cartes bancaires"
+      },
+      {
+        "id": 7,
+        "stripe": "price_XXXXXX",
+        "title": "Set de table",
+        "price": 28.00,
+        "image": "./image/settable.webp",
+        "description": "30x40cm en tissu épais couleur lin"
+      },
+      {
+        "id": 8,
+        "stripe": "price_XXXXXX",
+        "title": "Housse de coussin",
+        "price": 32.00,
+        "image": "./image/houssecoussin.webp",
+        "description": "40x40cm en tissu épais blanc"
+      },
+      {
+        "id": 9,
+        "stripe": "price_XXXXXX",
+        "title": "Sac cabas",
+        "price": 35.00,
+        "image": "./image/saccabas.webp",
+        "description": "47x33cm avec poche intérieure"
+      },
+      {
+        "id": 10,
+        "stripe": "price_XXXXXX",
+        "title": "Trousse pochette",
+        "price": 19.90,
+        "image": "./image/trousse.webp",
+        "description": "28x17cm (7.5cm profondeur)"
+      },
+      {
+        "id": 11,
+        "stripe": "price_XXXXXX",
+        "title": "Pochette chic bi-matière",
+        "price": 25.50,
+        "image": "./image/pochette.webp",
+        "description": "30x22cm avec dragonne amovible"
+      },
+      {
+        "id": 12,
+        "stripe": "price_XXXXXX",
+        "title": "Trousse patchwork",
+        "price": 16.90,
+        "image": "./image/patchwork.webp",
+        "description": "20x11cm (5cm profondeur)"
+      },
+      {
+        "id": 13,
+        "stripe": "price_XXXXXX",
+        "title": "Sac à dos enfant",
+        "price": 29.90,
+        "image": "./image/sacados.webp",
+        "description": "30x27cm (8cm profondeur)"
+      },
+      {
+        "id": 14,
+        "stripe": "price_XXXXXX",
+        "title": "Chouchou en soie",
+        "price": 12.50,
+        "image": "./image/chouchou.webp",
+        "description": "En satin de soie ou fibrane"
+      },
+      {
+        "id": 15,
+        "stripe": "price_XXXXXX",
+        "title": "Bonnet de soie",
+        "price": 22.90,
+        "image": "./image/bonnet.webp",
+        "description": "Double face satin de soie"
+      },
+      {
+        "id": 16,
+        "stripe": "price_XXXXXX",
+        "title": "Serviette d'invité",
+        "price": 18.00,
+        "image": "./image/serviette.webp",
+        "description": "30x50cm avec motif brodé"
+      }
+    ]
+  

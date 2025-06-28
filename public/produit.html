@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produit - MonShop</title>
+    <link rel="stylesheet" href="produit.css">
+    <link rel="icon" href="/favicon.ico">
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- En-tête identique -->
+    <header>
+        <nav>
+          <div><a href="index.html" class="product-link"><img src="logo.png" alt="logo" class="logo" /></a></div>
+          <ul>
+            <li><a href="#" id="boutique-link">Boutique</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="panier.html">Panier (<span id="cart-count">0</span>)</a></li>
+            <!-- Lien admin caché - visible seulement en développement -->
+            <li style="display: none;"><a href="/admin/" id="admin-link">Admin</a></li>
+            <!-- Bouton Instagram amélioré -->
+            <li><a href="https://www.instagram.com/974christine10" target="_blank" rel="noopener noreferrer" class="instagram-btn">
+              <i class="fab fa-instagram"></i>
+              Instagram
+            </a></li>
+          </ul>
+        </nav>
+      </header>
+
+    <!-- Contenu principal dynamique -->
+    <main class="product-page" id="product-container">
+        <!-- Le JS remplira cette section -->
+    </main>
+
+    <!-- Pied de page identique -->
+    <footer>
+        <p>© 2025 MonShop - Tous droits réservés</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="./js/carts.js"></script> <!-- Pour gérer le panier global -->
+    <script src="./js/product.js"></script> <!-- Le JS spécifique à cette page -->
+</body>
+</html>

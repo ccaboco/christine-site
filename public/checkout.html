@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Checkout</title>
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <button id="checkout-button">Payer</button>
+
+  <script>
+    const stripe = Stripe('pk_test_...'); // Votre clé publique Stripe
+    
+    document.getElementById('checkout-button').addEventListener('click', async () => {
+      try {
+        const response = await fetch('/create-checkout-session', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            items: [
+              { price: "prix_stripe_id", quantity: 1 } // Remplacez par votre prix Stripe
+            ]
+          })
+        });
+        
+        const { id } = await response.json();
+        
+        await stripe.redirectToCheckout({ sessionId: id });
+      } catch (error) {
+        console.error('Erreur:', error);
+      }
+    });
+  </script>
+</body>
+</html>
