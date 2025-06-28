@@ -84,7 +84,7 @@
         "stripe": "price_XXXXXX",
         "title": "Pochette chic bi-matière",
         "price": 25.50,
-        "image": "./image/pochette.webp",
+        "image": "./image/pochette.jfif",
         "description": "30x22cm avec dragonne amovible"
       },
       {
