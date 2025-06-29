@@ -26,6 +26,16 @@
 <body>
   <h1>Merci pour votre achat !</h1>
   <p>Votre commande a bien été enregistrée.</p>
+  <script>
+  // Vider le panier
+  localStorage.removeItem('cart');
+
+  // OU si tu stockes tout dans 'cartItems' par ex.
+  // localStorage.removeItem('cartItems');
+
+  // Optionnel : vérifier
+  console.log('Panier vidé !');
+</script>
 </body>
 <footer>
   <p>© 2025 Christine. Tous droits réservés.</p>
